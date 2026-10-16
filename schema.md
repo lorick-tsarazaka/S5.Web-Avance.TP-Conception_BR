@@ -11,7 +11,7 @@
     - exemple 
         'Plat Malagasy' et 'Plat GASY'
 
-- commandes (**id_commande** , date , #id_client , #id_table , #id_serveur) (modifie)
+- commandes (**id_commande** , date , #id_client? , #id_table? , #id_serveur?) (modifie)
 - details_commandes (**id_detail** , #id_commande , #id_plat , quantite) (nouveau)
 - Piege etape 3 :
     - J'ai place les quantites dans details commandes
