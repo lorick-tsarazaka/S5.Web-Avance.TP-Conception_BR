@@ -11,12 +11,18 @@
     - exemple 
         'Plat Malagasy' et 'Plat GASY'
 
-- commandes (**id_commande** , date , #id_client) (modifie)
+- commandes (**id_commande** , date , #id_client , #id_table , #id_serveur) (modifie)
 - details_commandes (**id_detail** , #id_commande , #id_plat , quantite) (nouveau)
 - Piege etape 3 :
     - J'ai place les quantites dans details commandes
 
 - clients (**id_client** , nom) (nouveau)
 - Piege etape 4 :
-    - Ma cle etrangere est **NOT NULL**
+    - Ma cle etrangere n'est pas **NOT NULL**
     - Pour ne perdre aucune commande il faut la jointure **LEFT JOIN**
+
+- serveurs (**id_serveur** , nom) (nouveau)
+- tables (**id_table** , numero_table) (nouveau)
+- Piege etape 5 :
+    - le nom **table** pose un probleme car table et un mot-cle reserve du langage SQL
+

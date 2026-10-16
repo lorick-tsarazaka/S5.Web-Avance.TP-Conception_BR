@@ -12,14 +12,14 @@ INSERT INTO clients (nom) VALUES
 ('Ben Kader'),
 ('Ahmed Ben Salah');
 
-INSERT INTO commandes (id_client, date_commande) VALUES 
-(1, '2026-09-11'),
-(2, '2026-10-17'),
-(3, '2026-10-22');
+INSERT INTO commandes (id_commande , id_client, date_commande) VALUES 
+(4, 1, '2026-09-11'),
+(5, 2, '2026-10-17'),
+(6, 3, '2026-10-22');
 
 INSERT INTO details_commandes (id_commande, id_plat, quantite) VALUES 
-(1, 1, 2),
-(1, 2, 1),
-(2, 3, 3),
-(3, 4, 1),
-(3, 5, 2);
+(4, 1, 2),
+(4, 2, 1),
+(5, 3, 3),
+(6, 4, 1),
+(6, 5, 2);
