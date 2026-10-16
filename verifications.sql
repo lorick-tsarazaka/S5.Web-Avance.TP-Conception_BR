@@ -30,10 +30,36 @@ LEFT JOIN clients AS cl ON cmd.id_client = cl.id_client;
 
 -- Etape 5
 -- nbres de commandes et chiffre d'affaires par serveur
--- Nombre de commandes et chiffre d'affaires par serveur
 SELECT s.nom, COUNT(DISTINCT cmd.id_commande) AS nombre_commandes, SUM(pl.prix * dc.quantite) AS chiffre_affaires
 FROM serveurs AS s
 JOIN commandes AS cmd ON s.id_serveur = cmd.id_serveur
 JOIN details_commandes AS dc ON cmd.id_commande = dc.id_commande
 JOIN plats AS pl ON dc.id_plat = pl.id_plat
 GROUP BY s.id_serveur, s.nom;
+
+-- Etape 6
+--  liste des commandes non soldées avec le montant dû, le montant payé et le reste à payer
+SELECT *
+FROM (
+    SELECT c.id_commande,
+           SUM(pl.prix * dc.quantite) AS montant_du,
+           COALESCE(
+               (SELECT SUM(pc.montant)
+                FROM payement_commandes AS pc
+                WHERE pc.id_commande = c.id_commande),
+               0
+           ) AS montant_paye,
+           SUM(pl.prix * dc.quantite) - COALESCE(
+               (SELECT SUM(pc.montant)
+                FROM payement_commandes AS pc
+                WHERE pc.id_commande = c.id_commande),
+               0
+           ) AS reste_a_payer
+    FROM commandes AS c
+    JOIN details_commandes AS dc ON c.id_commande = dc.id_commande
+    JOIN plats AS pl ON dc.id_plat = pl.id_plat
+    GROUP BY c.id_commande
+) AS montants
+WHERE montant_paye < montant_du
+ORDER BY id_commande;
+ORDER BY c.id_commande;

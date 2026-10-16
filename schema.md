@@ -26,3 +26,9 @@
 - Piege etape 5 :
     - le nom **table** pose un probleme car table et un mot-cle reserve du langage SQL
 
+- type_payements (**id_type** , libelle) (nouveau)
+- payement_commandes(**id_payement** , #id_commande , #id_type , montant) (nouveau)
+- Piege etape 6 :
+    - une colonne **montant_paye** dans la table commande ne suffit pas car l'on peut faire un payement avec deux type de payement different pour un seule commande
+    - Le mode de payement : 
+
