@@ -1,6 +1,6 @@
 # Schemas
 
-- plats (**id_carte** , nom , #id_categorie , prix) (modifier)
+- plats (**id_carte** , nom , #id_categorie , prix) (modifie)
 - Piege etape 1 :    
     - Type que j'ai choisi pour le prix **int**
     - Indentifiant choisi **serial**
@@ -11,7 +11,12 @@
     - exemple 
         'Plat Malagasy' et 'Plat GASY'
 
-- commandes (**id_commande** , date) (nouveau)
+- commandes (**id_commande** , date , #id_client) (modifie)
 - details_commandes (**id_detail** , #id_commande , #id_plat , quantite) (nouveau)
 - Piege etape 3 :
     - J'ai place les quantites dans details commandes
+
+- clients (**id_client** , nom) (nouveau)
+- Piege etape 4 :
+    - Ma cle etrangere est **NOT NULL**
+    - Pour ne perdre aucune commande il faut la jointure **LEFT JOIN**
